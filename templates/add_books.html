@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center my-3 bg-primary text-light">Add Books</h1>
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <form method="post" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form | crispy}}
+            <input type="submit" class="btn btn-primary w-100" value="Register">
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

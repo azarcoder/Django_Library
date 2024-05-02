@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-center my-3 bg-primary text-light">Admin Page</h1>
+<div class="container">
+  <div class="row justify-content-end">
+      <div class="col-md-6">
+          {% if messages %}
+              {% for i in messages %}
+              {% if i.tags == 'error' %}
+                  <div class="alert alert-danger">
+                      {{i}}
+                  </div>
+              {% else %}
+                  <div class="alert alert-{{ i.tags }}">
+                      {{i}}
+                  </div>
+              {% endif %}
+              {% endfor %}
+          {% endif %}
+</div>
+  </div>
+      </div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 my-5">
+        <!-- SVG Image -->
+        <img src="{% static 'images/JavaScript.png'%}" alt="" width="400px">
+        
+      </div>
+      <div class="col-md-6">
+        <div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <!-- Buttons -->
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <a href="{% url 'adminLogin' %}" class="btn btn-primary mx-5">Login</a>
+        <a href="{% url 'adminRegister' %}" class="btn btn-primary">Register</a>            
+    </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

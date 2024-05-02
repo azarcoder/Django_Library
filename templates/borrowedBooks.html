@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    .center
+    {
+        text-align: center;
+    }
+    th
+    {
+        text-align: center;
+    }
+</style>
+<h1 class="text-center my-3 bg-primary text-light">Borrowed Books</h1>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            {% if messages %}
+                {% for i in messages %}
+                {% if i.tags == 'error' %}
+                    <div class="alert alert-danger">
+                        {{i}}
+                    </div>
+                {% else %}
+                    <div class="alert alert-{{ i.tags }}">
+                        {{i}}
+                    </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+  </div>
+    </div>
+        </div>
+        <div class="container" style="margin-top: 50px;">
+            <table class="table table-bordered my-5">
+              <thead>
+                <tr>
+                  <th scope="col">S.no</th>
+                  <th scope="col">Book Id</th>
+                  <th scope="col">Book Image</th>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Author Name</th>
+                  <th scope="col">Book Availability count</th>
+                </tr>
+              </thead>
+              {% for i in book %}
+                {% if i.bookCount < 3 %}
+              <tbody>
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>{{i.bookId}}</td>
+                  <td><img src="{{i.images.url}}" alt="Book Image" width="100"></td>
+                  <td>{{i.bookName}}</td>
+                  <td>{{i.authorName}}</td>
+                  <td>{{i.bookCount}}</td>
+                </tr>
+              </tbody>
+              {% endif %}
+              {% endfor %}
+            </table>
+          </div>
+{% endblock %}

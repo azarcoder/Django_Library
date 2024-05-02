@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-center my-3 bg-primary text-light">Student Page</h1>
+<div class="container">
+  <div class="row justify-content-end">
+      <div class="col-md-6">
+          {% if messages %}
+              {% for i in messages %}
+              {% if i.tags == 'error' %}
+                  <div class="alert alert-danger">
+                      {{i}}
+                  </div>
+              {% else %}
+                  <div class="alert alert-{{ i.tags }}">
+                      {{i}}
+                  </div>
+              {% endif %}
+              {% endfor %}
+          {% endif %}
+</div>
+  </div>
+      </div>
+
+<div class="container">
+    <div class="row">
+        <!-- Left side: Photo and Person Details -->
+        <div class="col-md-6">
+            <!-- Photo -->
+            <img src="{{student.photo.url}}" class="img-fluid mb-3" alt="Student Photo" width="200px" height="200px">
+            
+            <!-- Person Details -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Student Details</h5>
+                    <p class="card-text">Name: {{student.name}}</p>
+                    <p class="card-text">Contact: {{student.contact}}</p>
+                    <p class="card-text">City: {{student.city}}</p>
+                    <p class="card-text">Email: {{student.email}}</p>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Right side: Buttons -->
+        <div class="col-md-6 my-5">
+            <div class="btn-group-vertical">
+                <a href="{% url 'viewAllBooks' %}" class="btn btn-primary mx-5 my-3">View All Books</a>
+                <a href="{% url 'lendBook' %}" class="btn btn-primary mx-5 my-3">Lend Book</a>
+                <a href="{% url 'returnBook' %}" class="btn btn-primary mx-5 my-3">Return Book</a>
+                <a href="{% url 'studentLogout' %}" class="btn btn-danger mx-5 my-3">Logout</a>  
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

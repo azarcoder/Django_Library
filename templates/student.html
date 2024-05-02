@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-center my-3 bg-primary text-light">Student Page</h1>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            {% if messages %}
+                {% for i in messages %}
+                {% if i.tags == 'error' %}
+                    <div class="alert alert-danger">
+                        {{i}}
+                    </div>
+                {% else %}
+                    <div class="alert alert-{{ i.tags }}">
+                        {{i}}
+                    </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+</div>
+    </div>
+        </div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 my-5">
+        <!-- SVG Image -->
+        <img src="{% static 'images/books.png'%}" alt="" width="600px">
+        
+      </div>
+      <div class="col-md-6">
+        <!-- Buttons -->
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <a href="{% url 'studentRegister' %}" class="btn btn-primary mx-5">Register</a>
+            <a href="{% url 'studentLogin' %}" class="btn btn-primary">Login</a>            
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-center my-3 bg-primary text-light">Admin Page</h1>
+<div class="container">
+  <div class="row justify-content-end">
+      <div class="col-md-6">
+          {% if messages %}
+              {% for i in messages %}
+              {% if i.tags == 'error' %}
+                  <div class="alert alert-danger">
+                      {{i}}
+                  </div>
+              {% else %}
+                  <div class="alert alert-{{ i.tags }}">
+                      {{i}}
+                  </div>
+              {% endif %}
+              {% endfor %}
+          {% endif %}
+</div>
+  </div>
+      </div>
+<h3>Welcome,<em class="font-italic">{{username}}</em></h3> 
+<a href="{% url 'adminLogout' %}" class="btn btn-danger mx-5">Logout</a>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 my-5">
+        <!-- SVG Image -->
+        <img src="{% static 'images/notebook.png'%}" alt="" width="400px">
+        
+      </div>
+      <div class="col-md-6">
+        <div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <!-- Buttons -->
+<div class="d-flex justify-content-center align-items-center h-100">
+    <a href="{% url 'addNewBook' %}" class="btn btn-primary my-5 mx-2">Add New Book</a>
+    <a href="{% url 'viewBorrowed' %}" class="btn btn-primary my-5 mx-2">View Borrowed</a>
+    <a href="{% url 'viewAllStudents' %}" class="btn btn-primary my-5 mx-2">View All Students</a>
+    <a href="{% url 'viewAllBooks' %}" class="btn btn-primary my-5 mx-2">View All Books</a>
+</div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
